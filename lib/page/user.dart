@@ -38,7 +38,7 @@ class _MyWidgetState extends State<usermain> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween, 
           children: [ 
             
-            Text("Welcome ${currentuser.uid}",style: TextStyle(fontSize: 18),overflow: TextOverflow.fade,maxLines: 1), 
+            Text("Welcome user"), 
            ], 
         ), 
 
@@ -59,7 +59,7 @@ class _MyWidgetState extends State<usermain> {
           ],
         
       ),  
-      drawer: Drawer(),
+      
       body: _Widgetoption.elementAt(_selectindex), 
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem > [

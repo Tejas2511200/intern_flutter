@@ -15,10 +15,12 @@ class signup extends StatefulWidget {
 class _signupState extends State<signup> {
   final _formKey = GlobalKey<FormState>();
 
+  var uname = "";
   var email = "";
   var password = "";
   var cpassword = "";
 
+  final unamecontroller = TextEditingController();
   final emailcontroller = TextEditingController();
   final passwordcontroller = TextEditingController();
   final cpasswordcontroller = TextEditingController();
@@ -70,9 +72,12 @@ class _signupState extends State<signup> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar( 
-        leading: IconButton(icon: Icon(Icons.arrow_back_ios), 
+    return Scaffold( 
+      backgroundColor: Color.fromARGB(255, 212, 240, 221),
+      appBar: AppBar(  
+        backgroundColor: Colors.transparent,
+              elevation: 0,
+        leading: IconButton(icon: Icon(Icons.arrow_back_ios),color: Colors.black, 
         onPressed: () {
            Navigator.pushReplacement(
                           context,
@@ -84,7 +89,7 @@ class _signupState extends State<signup> {
                         );
         }
         ),
-        title: Text("user login"),
+        
       ),
       body: Form(
         // in form we cannot create more than one chlid
@@ -98,7 +103,37 @@ class _signupState extends State<signup> {
             child: ListView(
               // to show as a list we use list view
               children: [
-                // to work with more than one widgtet we use children
+                // to work with more than one widgtet we use children 
+                  ClipRRect(borderRadius: BorderRadius.circular(8.0) ,child: Image.network("https://images.unsplash.com/photo-1543599538-a6c4f6cc5c05?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c2lnbiUyMHVwfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+                   height: 190.0,
+     fit: BoxFit.fill
+                  
+                  )
+                  
+                  ),
+                Container(
+                  
+                  // it is one type of widget that we can create our own
+                  margin: EdgeInsets.symmetric(vertical: 10.0),
+                  child: TextFormField(
+                    //When app start cursore will focus on this textfiled when its true.
+                    autofocus: false,
+                    decoration: InputDecoration(
+                      labelText: 'UserName: ',
+                      labelStyle: TextStyle(fontSize: 20.0),
+                      border: OutlineInputBorder(),
+                      errorStyle:
+                          TextStyle(color: Colors.redAccent, fontSize: 15),
+                    ),
+                    controller: unamecontroller,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please Enter  UserName';
+                      } 
+                    },
+                  ),
+                ),
+
                 Container(
                   // it is one type of widget that we can create our own
                   margin: EdgeInsets.symmetric(vertical: 10.0),
@@ -142,7 +177,7 @@ class _signupState extends State<signup> {
                       if (value == null || value.isEmpty) {
                         return 'Please Enter  password';
                       } else if (value.length < 6) {
-                        return 'Password length should be Greater Than 6';
+                        return 'should be Greater Than 6 digits';
                       }
                     },
                   ),
@@ -183,7 +218,8 @@ class _signupState extends State<signup> {
                         ElevatedButton(
                           onPressed: () {
                             if (_formKey.currentState?.validate()) {
-                              setState(() {
+                              setState(() { 
+                                uname = unamecontroller.text;
                                 email = emailcontroller.text;
                                 password = passwordcontroller.text;
                                 cpassword = cpasswordcontroller.text;

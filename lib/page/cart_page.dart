@@ -46,7 +46,7 @@ class _carttotalState extends State<_carttotal> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [ 
-        "\$${_cart.totalprice}".text.xl5.color(Vx.red400).make(),
+        "\₹${_cart.totalprice}".text.xl5.color(Vx.red400).make(),
         30.widthBox,
         ElevatedButton(
             onPressed: () {

@@ -73,7 +73,9 @@ class _ChangePasswordState extends State<ChangePassword> {
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please Enter Password';
-                  }
+                  } else if (value.length < 6) {
+                        return 'should be Greater Than 6 digits';
+                      }
                   return null;
                 },
               ),

@@ -63,7 +63,7 @@ class _forgot_passState extends State<forgot_pass> {
                         );
         }
         ),
-        title: Text("user login"), 
+        title: Text("Forgot Password"), 
         
       ),
       body: Form(

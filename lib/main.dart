@@ -37,8 +37,9 @@ final Future<FirebaseApp> _initialization = Firebase.initializeApp();
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Center(child: CircularProgressIndicator());
             }
-            return MaterialApp(
-              title: 'Flutter firebase Authentication Demo',
+            return MaterialApp( 
+              debugShowCheckedModeBanner: false,
+              title: 'SHOPWORLD.com',
                theme: ThemeData(primarySwatch: Colors.green),
               home: loginpage(), 
              initialRoute: myroute.loginroute,

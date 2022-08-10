@@ -41,23 +41,28 @@ class _ProfileState extends State<Profile> {
         children: [
           Text(
             'User ID: $uid',
-            style: TextStyle(fontSize: 12.0),
+            style: TextStyle(fontSize: 15.0),
           ),
-          Row( 
-            children: [
-              Text(
-                'Email: $email',
-                style: TextStyle(fontSize: 12.0),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Expanded(
+              child: Row(        
+                children: [
+                  Text(
+                    'Email: $email',
+                    style: TextStyle(fontSize: 12.0),
+                  ),
+                  user?.emailVerified
+                      ? Text(
+                          'verified',
+                          style: TextStyle(fontSize: 12.0, color: Colors.blueGrey),
+                        )
+                      : TextButton(
+                          onPressed: () => {verifyEmail()},
+                          child: Text('Verify Email',style: TextStyle(fontSize: 10),))
+                ],
               ),
-              user?.emailVerified
-                  ? Text(
-                      'verified',
-                      style: TextStyle(fontSize: 12.0, color: Colors.blueGrey),
-                    )
-                  : TextButton(
-                      onPressed: () => {verifyEmail()},
-                      child: Text('Verify Email'))
-            ],
+            ),
           ),
           Text(
             'Created: $creationTime',
